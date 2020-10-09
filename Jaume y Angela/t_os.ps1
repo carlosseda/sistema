@@ -2,6 +2,8 @@
 
 "administrador" | ConvertTo-SecureString -AsPlainText -Force | ConvertFrom-SecureString | Out-File "C:\mysql_password.txt"
 
+[string] $name = (Get-CimInstance Win32_OperatingSystem).Caption
+[string] $version = (Get-CimInstance Win32_OperatingSystem).Version
 [string] $User = "administrador"
 [string] $File = "C:\mysql_password.txt"
 [PSObject] $Credential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $User, (Get-Content $File | ConvertTo-SecureString)
@@ -26,7 +28,7 @@ catch
 
 $MYSQLCommand = New-Object MySql.Data.MySqlClient.MySqlCommand
 $MYSQLCommand.Connection = $connection
-$MYSQLCommand.CommandText='INSERT into `sistema`.`t_os` (`name`,`version`,`memory`) VALUES("Windows","10019041","13")'
+$MYSQLCommand.CommandText='INSERT into `sistema`.`t_os` (`name`,`versión`,`memory`) VALUES("$($name)","$($version)","13")'
 
 
 $Error.Clear()
