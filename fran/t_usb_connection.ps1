@@ -68,9 +68,11 @@ catch
 # Preparamos un objeto MySqlCommand cuyo valor de su atributo CommandText será la query de MySQL (en este caso
 # insertar un registro en la tabla t.chasis). 
 
+$version = (Get-CimInstance -class CIM_USBDevice).USBVersion
+
 $MYSQLCommand = New-Object MySql.Data.MySqlClient.MySqlCommand
 $MYSQLCommand.Connection = $connection
-$MYSQLCommand.CommandText='INSERT into `sistema`.`t_usb_connection` (`version`,`component_type`,`component_id`) VALUES("3.0","1","1")'
+$MYSQLCommand.CommandText='INSERT into `sistema`.`t_usb_connection` (`version`,`component_type`,`component_id`) VALUES("$($version)g","1","1")'
 
 # Finalmente ejecutamos la query
 

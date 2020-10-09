@@ -1,7 +1,6 @@
 # Para lanzar este archivo necesitamos instalar previamente en el Windows que lo ejecuta el siguiente m�dulo: 
 #
 # https://dev.mysql.com/downloads/connector/net/
-# Le damos clic al segundo download
 #
 # A continuaci�n debemos crear un usuario en mysql que tenga acceso remoto.Debemos entrar en mysql server y escribir:
 #
@@ -34,7 +33,7 @@
 #
 # "clave_preferida" | ConvertTo-SecureString -AsPlainText -Force | ConvertFrom-SecureString | Out-File "C:\mysql_password.txt"
 #
-# Finalmente creamos un objeto PSCredential en la variable $credential que contendr� nuestro usuario ($credential.UserName) como nuestra
+# Finalmente creamos un objeto PSCredential en la variable $cred que contendr� nuestro usuario ($cred.UserName) como nuestra
 # contrase�a en texto plano $cred.GetNetworkCredential().Password
 
 
@@ -71,10 +70,24 @@ catch
 
 $MYSQLCommand = New-Object MySql.Data.MySqlClient.MySqlCommand
 $MYSQLCommand.Connection = $connection
-$hresolution = (Get-CIMInstance Win32_VideoController).CurrentHorizontalResolution
-$wresolution = (Get-CIMInstance Win32_VideoController).CurrentVerticalResolution
-$hz = (Get-CIMInstance Win32_VideoController).CurrentRefreshRate 
-$MYSQLCommand.CommandText='INSERT into `sistema`.`t_screen` (`brand`,`name`,`reference`,`high_px`,`width_px`,`hz`,`inch`,`marker_id`,`start_date`,`end_date`) VALUES("HP","MONITOR","696969","$($hresolution)","$($wresolution)","$($hz)",320,3,"2020-10-08","2020-02-18")'
+
+
+
+$caption = (Get-Wmiobject -class Win32_UserAccount).Caption
+$privilege = (Get-Wmiobject -class Win32_UserAccount).AccountType
+
+
+$caption | ForEach-Object –Process {
+    switch ($element) {
+        ($element -match 'Administrador') {
+             "Use index on: $element"
+            }
+        Default { "didn't match anything…" }
+    };
+};
+
+
+$MYSQLCommand.CommandText='INSERT into `sistema`.`t_session` (`name`,`privileges`) VALUES("$($caption)","$($privilege)")'
 
 # Finalmente ejecutamos la query
 
