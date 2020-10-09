@@ -1,5 +1,6 @@
 [void][System.Reflection.Assembly]::LoadWithPartialName("MySql.Data")
 
+[string] $license = (Get-CimInstance Win32_OperatingSystem).SerialNumber
 [string] $User = "administrador"
 [string] $File = "C:\mysql_password.txt"
 [PSObject] $Credential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $User, (Get-Content $File | ConvertTo-SecureString)
@@ -24,7 +25,7 @@ catch
 
 $MYSQLCommand = New-Object MySql.Data.MySqlClient.MySqlCommand
 $MYSQLCommand.Connection = $connection
-$MYSQLCommand.CommandText='INSERT into `sistema`.`t_os_license` (`license`,`os_id`) VALUES("00330-80000-00000-AA136",1)'
+$MYSQLCommand.CommandText='INSERT into `sistema`.`t_os_license` (`license`) VALUES("$($license)")'
 
 
 $Error.Clear()
