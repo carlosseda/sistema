@@ -68,10 +68,14 @@ catch
 # Preparamos un objeto MySqlCommand cuyo valor de su atributo CommandText será la query de MySQL (en este caso
 # insertar un registro en la tabla t.chasis). 
 
+$volumeName = (Get-WmiObject -Class Win32_LogicalDisk).VolumeName
+$size = (Get-WmiObject -Class Win32_LogicalDisk).Size
+$fileSystem = (Get-WmiObject -Class Win32_LogicalDisk).FileSystem
+$osInstalled = (Get-WmiObject -Class Win32_LogicalDisk).osInstalled
+$diskId = (Get-WmiObject -Class Win32_LogicalDisk).DiskId
 $MYSQLCommand = New-Object MySql.Data.MySqlClient.MySqlCommand
 $MYSQLCommand.Connection = $connection
-$MYSQLCommand.CommandText='INSERT into `sistema`.`t_partition` (`volume_name`,`size`,`file_system`,`os_installed`,`disk_id`) VALUES("Alumnos",1188453,"ntfs",0,1)'
-
+$MYSQLCommand.CommandText='INSERT into `sistema`.`t_partition` (`volume_name`,`size`,`file_system`,`os_installed`,`disk_id`) VALUES("$($volumeName)","$($size)","$($fileSystem)","$($osInstalled)","$(diskId)")'
 # Finalmente ejecutamos la query
 
 $Error.Clear()

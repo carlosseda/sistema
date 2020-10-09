@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 08-10-2020 a las 20:22:38
+-- Tiempo de generación: 09-10-2020 a las 09:16:11
 -- Versión del servidor: 8.0.21-0ubuntu0.20.04.4
 -- Versión de PHP: 7.4.10
 
@@ -832,8 +832,9 @@ CREATE TABLE `t_ram` (
   `id` int UNSIGNED NOT NULL,
   `brand` varchar(255) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
-  `type` varchar(255) DEFAULT NULL,
-  `memory` int UNSIGNED NOT NULL,
+  `form_type` enum('DIMM','SODIMM') CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `type` enum('DDR1','DDR2','DDR3','DDR4','DDR5') CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `size` int UNSIGNED NOT NULL,
   `cl` int UNSIGNED DEFAULT NULL,
   `max_voltage` int UNSIGNED NOT NULL,
   `base_voltage` int UNSIGNED NOT NULL,
@@ -848,9 +849,9 @@ CREATE TABLE `t_ram` (
 -- Volcado de datos para la tabla `t_ram`
 --
 
-INSERT INTO `t_ram` (`id`, `brand`, `name`, `type`, `memory`, `cl`, `max_voltage`, `base_voltage`, `base_frequency`, `max_frequency`, `active`, `created_at`) VALUES
-(1, 'Kingston', 'HyperX', 'DDR4', 16, 16, 1350, 1200, 2400, 3466, 1, '2020-10-08 18:50:51'),
-(2, 'Kingston', 'HyperX', 'DDR4', 16, 16, 1350, 1200, 2400, 3466, 1, '2020-10-08 18:50:54');
+INSERT INTO `t_ram` (`id`, `brand`, `name`, `form_type`, `type`, `size`, `cl`, `max_voltage`, `base_voltage`, `base_frequency`, `max_frequency`, `active`, `created_at`) VALUES
+(1, 'Kingston', 'HyperX', NULL, 'DDR4', 16, 16, 1350, 1200, 2400, 3466, 1, '2020-10-08 18:50:51'),
+(2, 'Kingston', 'HyperX', NULL, 'DDR4', 16, 16, 1350, 1200, 2400, 3466, 1, '2020-10-08 18:50:54');
 
 -- --------------------------------------------------------
 
@@ -860,7 +861,7 @@ INSERT INTO `t_ram` (`id`, `brand`, `name`, `type`, `memory`, `cl`, `max_voltage
 
 CREATE TABLE `t_ram_connection` (
   `id` int UNSIGNED NOT NULL,
-  `memory_type` varchar(255) NOT NULL,
+  `memory_type` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `bank_label` varchar(255) DEFAULT NULL,
   `max_memory_frequency` float UNSIGNED DEFAULT NULL,
   `base_memory_frequency` float UNSIGNED DEFAULT NULL,
