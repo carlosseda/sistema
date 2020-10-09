@@ -35,7 +35,7 @@
 #
 # Finalmente creamos un objeto PSCredential en la variable $cred que contendrá nuestro usuario ($cred.UserName) como nuestra
 # contraseña en texto plano $cred.GetNetworkCredential().Password
-
+# 
 
 [string] $User = "administrador"
 [string] $File = "C:\mysql_password.txt"
