@@ -68,9 +68,18 @@ catch
 # Preparamos un objeto MySqlCommand cuyo valor de su atributo CommandText será la query de MySQL (en este caso
 # insertar un registro en la tabla t_gpu). 
 
+$high_resolution = (Get-CimInstance -class CIM_VideoController).CurrentHorizontalResolution
+$width_resolution = (Get-CimInstance -class CIM_VideoController).CurrentVerticalResolution
+$brand = (Get-CimInstance -class CIM_VideoController).AdapterCompatibility
+$name = (Get-CimInstance -class CIM_VideoController).Name
+$max_frequency = (Get-CimInstance -class CIM_VideoController).AdapterDACType
+$max_memory =  (Get-CimInstance -class CIM_VideoController).AdapterRam
+$max_hz = (Get-CimInstance -class CIM_VideoController).MaxRefreshRate
+
+
 $MYSQLCommand = New-Object MySql.Data.MySqlClient.MySqlCommand
 $MYSQLCommand.Connection = $connection
-$MYSQLCommand.CommandText='INSERT INTO `sistema`.`t_gpu` (`brand`,`name`,`max_frequency`,`max_memory`,`max_high_resolution_px`,`max_width_resolution_px`,`tdp_w`) VALUES("nVidia","RTX 3090","1695","24","7680","4320","350")'
+$MYSQLCommand.CommandText='INSERT INTO `sistema`.`t_gpu` (`brand`,`name`,`max_frequency`,`max_memory`,`max_width_resolution_px`,`max_high_resolution_px`,`max_hz`,`tdp_w`) VALUES("$($brand)","$($name)","$($maxfrequenxy)","$($max_memory)","$($width_resolution)","$($high_resolution)","$($max_hz),"350")'
 
 # Finalmente ejecutamos la query
 
