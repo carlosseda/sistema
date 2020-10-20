@@ -14,6 +14,10 @@ class Ram {
     [Decimal]$MaxFrequency
     [Int]$Active
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6df19c84bef30d9336432d3a47692f5e87075eaa
     Ram($session)
     {
         $this.Brand = Invoke-Command -Session $session -ScriptBlock {(Get-CIMInstance Win32_PhysicalMemory).Manufacturer}
