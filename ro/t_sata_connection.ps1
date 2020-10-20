@@ -48,7 +48,8 @@ catch
 
 $MYSQLCommand = New-Object MySql.Data.MySqlClient.MySqlCommand
 $MYSQLCommand.Connection = $connection
-$MYSQLCommand.CommandText='INSERT into `sistema`.`t_sata_connection` (`version`, `motherboard_id`) VALUES("3.0",4)'
+$connection = (Get-CimInstance -Class Win32_IDEController).length;
+$MYSQLCommand.CommandText='INSERT into `sistema`.`t_sata_connection` (`version`, `motherboard_id`) VALUES("$($connection)",4)'
 
 # Finalmente ejecutamos la query
 
@@ -63,4 +64,5 @@ catch
 {
     write-warning ("Could not open a connection to Database $MySQLDB on Host $MySQLHost. Error: "+$Error[0].ToString())
 }
+
 
