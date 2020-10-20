@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 09-10-2020 a las 09:16:11
+-- Tiempo de generación: 09-10-2020 a las 09:30:16
 -- Versión del servidor: 8.0.21-0ubuntu0.20.04.4
 -- Versión de PHP: 7.4.10
 
@@ -369,6 +369,7 @@ CREATE TABLE `t_gpu` (
   `max_memory` float UNSIGNED DEFAULT NULL,
   `max_high_resolution_px` int UNSIGNED DEFAULT NULL,
   `max_width_resolution_px` int UNSIGNED NOT NULL,
+  `max_hz` int DEFAULT NULL,
   `tdp_w` int UNSIGNED DEFAULT NULL,
   `active` tinyint UNSIGNED NOT NULL DEFAULT '1',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -379,8 +380,8 @@ CREATE TABLE `t_gpu` (
 -- Volcado de datos para la tabla `t_gpu`
 --
 
-INSERT INTO `t_gpu` (`id`, `brand`, `name`, `max_frequency`, `max_memory`, `max_high_resolution_px`, `max_width_resolution_px`, `tdp_w`, `active`, `created_at`) VALUES
-(1, 'nVidia', 'RTX 3090', 1695, 24, 7680, 4320, 350, 1, '2020-10-08 09:44:26');
+INSERT INTO `t_gpu` (`id`, `brand`, `name`, `max_frequency`, `max_memory`, `max_high_resolution_px`, `max_width_resolution_px`, `max_hz`, `tdp_w`, `active`, `created_at`) VALUES
+(1, 'nVidia', 'RTX 3090', 1695, 24, 7680, 4320, NULL, 350, 1, '2020-10-08 09:44:26');
 
 -- --------------------------------------------------------
 
