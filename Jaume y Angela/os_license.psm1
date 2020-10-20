@@ -8,15 +8,17 @@ class OsLicense {
     Os_license($session)
     {
         $this.License = Invoke-Command -Session $session -ScriptBlock {(Get-CimInstance Win32_OperatingSystem).SerialNumber}
-        $this.Active =
     }
-
+    [Int] setActive($Active)
+    {
+        $this.Active = $Active
+    }
     [String] getLicense()
     {
         return $this.License 
     }
-    [Int] setActive($Active)
+    [Int] getActive()
     {
-        $this.Active 
+        return $this.Active 
     }
 }

@@ -5,38 +5,52 @@ class Backup {
     [string]$OriginPath
     [string]$DestinationPath
     [datetime]$DatetimeBackup
-    [int]$Error 
+    [int]$Errorcode 
     [int]$Active 
 
     Backup($session)
     {
-        $this.OriginPath = 
-        $this.DestinationPath =
-        $this.DatetimeBackup =
-        $this.Error = 
-        $this.Active = 
+
     }
 
     [String] setOriginPath($OriginPath)
     {
-        $this.OriginPath
+        $this.OriginPath =$OriginPath
     }
-
     [String] setDestinationPath($DestinationPath)
     {
-        $this.DestinationPath
+        $this.DestinationPath = $DestinationPath
     }
-
     [datetime] setDatetimeBackup($DatetimeBackup)
     {
-        $this.DatetimeBackup
+        $this.DatetimeBackup = $DatetimeBackup
     }
-    [Int] setError($Error)
+    [Int] setErrorcode($Errorcode)
     {
-        $this.Error 
+        $this.Errorcode = $Errorcode 
     }
     [Int] setActive($Active)
     {
-        $this.Active
+        $this.Active =$Active
+    }
+    [String] getOriginPath()
+    {
+        return $this.OriginPath
+    }
+    [String] getDestinationPath()
+    {
+        return $this.DestinationPath
+    }
+    [datetime] getDatetimeBackup()
+    {
+        return $this.DatetimeBackup
+    }
+    [Int] getError()
+    {
+        return $this.Error 
+    }
+    [Int] getActive()
+    {
+        return $this.Active
     }
 }

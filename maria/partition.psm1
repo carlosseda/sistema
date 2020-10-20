@@ -16,7 +16,11 @@ class Partition {
         $this.FileSystem = Invoke-Command -Session $session -ScriptBlock {(Get-WmiObject -Class Win32_LogicalDisk).FileSystem}
         $this.OsInstalled = Invoke-Command -Session $session -ScriptBlock {(Get-WmiObject -Class Win32_LogicalDisk).osInstalled}
         $this.DiskId = Invoke-Command -Session $session -ScriptBlock {(Get-WmiObject -Class Win32_LogicalDisk).DiskId}
-        $this.Active =
+    }
+
+    [Int] setActive($Active)
+    {
+        $this.Active = $Active
     }
 
     [String] getLicense()
@@ -39,8 +43,8 @@ class Partition {
     {
         return $this.DiskId 
     }
-    [Int] setActive($Active)
+    [Int] getActive()
     {
-        $this.Active 
+        return $this.Active 
     }
 }
