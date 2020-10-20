@@ -26,10 +26,13 @@ catch
     write-warning ("Could not open a connection to Database $MySQLDB on Host $MySQLHost. Error: "+$Error[0].ToString())
 }
  
+$brand = (Get-CIMInstance Win32_NetworkAdapter).Manufacturer[1]
+$name = (Get-CIMInstance Win32_NetworkAdapter).Name[1]
+$ip = (Get-CIMInstance Win32_NetworkAdapterConfiguration).IPAddress[1]
 
 $MYSQLCommand = New-Object MySql.Data.MySqlClient.MySqlCommand
 $MYSQLCommand.Connection = $connection
-$MYSQLCommand.CommandText='INSERT into `sistema`.`t_net` (`brand`,`name`,`reference`,`type`,`ip`,`wifi`,`wifi_ssid`,`rj_entries`,`space_id`,`marker_id`,`start_use`,`end_use`) VALUES("tp-link","tl-sf1005d","referencia","switch","192.168.0.1",1,"muevete3",5,1,4,"2020-10-05","2020-10-08")'
+$MYSQLCommand.CommandText='INSERT into `sistema`.`t_net` (`brand`,`name`,`reference`,`type`,`ip`,`wifi`,`wifi_ssid`,`rj_entries`,`space_id`,`marker_id`,`start_use`,`end_use`) VALUES("$($brand)","$($name)","referencia","switch","$($ip)","","","","","","","")'
 
 
 $Error.Clear()
