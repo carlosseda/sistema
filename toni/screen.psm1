@@ -14,16 +14,9 @@ class screen {
 
     screen($session)
     {
-        $this.Name = Invoke-Command -Session $session -ScriptBlock {(Get-CIMInstance Win32_DesktopMonitor).Name}
         $this.Widthpx = Invoke-Command -Session $session -ScriptBlock {(Get-CIMInstance Win32_VideoController).CurrentHorizontalResolution}
         $this.Highpx = Invoke-Command -Session $session -ScriptBlock {(Get-CIMInstance Win32_VideoController).CurrentVerticalResolution}
         $this.Hz = Invoke-Command -Session $session -ScriptBlock {(Get-CIMInstance Win32_VideoController).CurrentRefreshRate}
-
-    }
-
-    [String] setName($Name)
-    {
-        $this.Name = $Name
     }
 
     [Int] setWidthpx($Widthpx)
@@ -45,14 +38,17 @@ class screen {
     {
         return $this.Brand
     }
+
     [String] getName()
     {
         return $this.Name
     }
+
     [String] getReference()
     {
         return $this.Reference
     }
+
     [Int] getWidthpx()
     {
         return $this.Widthpx
@@ -77,7 +73,7 @@ class screen {
     {
         return $this.Hz
     }   
-    
+
     [Int] getActive()
     {
         return $this.Active
