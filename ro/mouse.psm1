@@ -9,7 +9,7 @@ class mouse {
 
     mouse($session)
     {
-        return $this.Connection
+ 
     }
 
     [string] getBrand()

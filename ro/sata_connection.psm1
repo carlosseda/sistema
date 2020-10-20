@@ -9,7 +9,7 @@ class sata_connection {
 
     sata_connection($session)
     {
-        $this.Connection = Invoke-Command -Session $session -ScriptBlock {(Get-CimInstance -Class Win32_IDEController).length;}
+        $this.Version = Invoke-Command -Session $session -ScriptBlock {(Get-CimInstance -Class Win32_IDEController).length;}
     }
 
     [Enum] getVersion()
