@@ -14,6 +14,7 @@ class Processor
     [float]$MaxMemorySize
     [float]$MaxMemorySlots
     [float]$PCIEVersion
+    [int]$Active
 
     Processor($session)
     {
@@ -23,6 +24,7 @@ class Processor
         $this.Threads = Invoke-Command -Session $session -ScriptBlock {Get-CIMInstance Win32.Processor).ThreadCount}
         $this.Bits = Invoke-Command -Session $session -ScriptBlock {Get-CIMInstance Win32.Processor).AddressWidth}
         $this.MaxClockSpeed = Invoke-Command -Session $session -ScriptBlock {Get-CIMInstance Win32.Processor).MaxClockSpeed}
+        $this.Active = 1
     }
 
     [float] getBaseClockSpeed()
@@ -53,5 +55,10 @@ class Processor
     [float] getPCIEVersion()
     {
         return $this.PCIEVersion
+    }
+
+    [int] getActive()
+    {
+        return $this.Active
     }
 }

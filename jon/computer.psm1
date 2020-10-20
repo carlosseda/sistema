@@ -6,6 +6,12 @@ class Computer
     [string]$Type
     [datetime]$StartUse
     [datetime]$EndUse    
+    [int]$Active
+
+    Computer()
+    {
+        $this.Active = 1
+    }
 
     [string] getReference()
     {
@@ -27,4 +33,8 @@ class Computer
         return $this.MaxMemorySlots
     }
 
+    [int] getActive()
+    {
+        return $this.Active
+    }
 }
