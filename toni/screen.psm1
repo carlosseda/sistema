@@ -21,6 +21,11 @@ class screen {
         $this.Active = 1
     }
 
+    [String] getName()
+    {
+        return $this.Name
+    }
+
     [Int] getWidthpx()
     {
         return $this.Widthpx
@@ -34,5 +39,24 @@ class screen {
     [Int] getHz()
     {
         return $this.Hz
+    }
+    [String] setName($Name)
+    {
+        $this.Name = $Name
+    }
+
+    [Int] setWidthpx($Widthpx)
+    {
+        $this.Widthpx = $Widthpx
+    }
+    
+    [Int] setHighpx($Highpx)
+    {
+        $this.Highpx = $Highpx
+    }    
+    
+    [Int] setHz($Hz)
+    {
+        $this.Hz = $Hz
     }
 }
