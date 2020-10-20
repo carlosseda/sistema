@@ -15,7 +15,7 @@ class Ram {
     [Int]$Active
 
 
-    Os($session)
+    Ram($session)
     {
         $this.Brand = Invoke-Command -Session $session -ScriptBlock {(Get-CIMInstance Win32_PhysicalMemory).Manufacturer}
         $this.Name = Invoke-Command -Session $session -ScriptBlock {(Get-CIMInstance Win32_PhysicalMemory).Name}
