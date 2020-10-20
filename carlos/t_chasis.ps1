@@ -82,6 +82,8 @@ try
     $queryResponse = $MYSQLCommand.ExecuteNonQuery()
 
     write ("query Ok")
+    Write-Output "query Ok"
+
 }
 catch
 {

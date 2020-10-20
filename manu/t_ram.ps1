@@ -65,10 +65,11 @@ switch( $type )
 $size = (Get-CIMInstance Win32_PhysicalMemory).Capacity
 $max_voltage = (Get-CIMInstance Win32_PhysicalMemory).MaxVoltage
 $base_voltage = (Get-CIMInstance Win32_PhysicalMemory).MinVoltage
+$base_frequency = (Get-CIMInstance Win32_PhysicalMemory).ConfiguredClockSpeed
 
 $MYSQLCommand = New-Object MySql.Data.MySqlClient.MySqlCommand
 $MYSQLCommand.Connection = $connection
-$MYSQLCommand.CommandText='INSERT into `sistema`.`t_ram` (`brand`,`name`,`form_type`,`type`,`size`,`cl`,`max_voltage`,`base_voltage`,`base_frequency`,`max_frequency`) VALUES("$($brand)","$($name)","$($form_type)","$($type)","$($size)","","$($max_voltage)","$($base_voltage)","","")'
+$MYSQLCommand.CommandText='INSERT into `sistema`.`t_ram` (`brand`,`name`,`form_type`,`type`,`size`,`cl`,`max_voltage`,`base_voltage`,`base_frequency`,`max_frequency`) VALUES("$($brand)","$($name)","$($form_type)","$($type)","$($size)","","$($max_voltage)","$($base_voltage)","$($base_frequency)","")'
 
 
 $Error.Clear()
