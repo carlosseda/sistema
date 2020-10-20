@@ -18,28 +18,9 @@ class screen {
         $this.Widthpx = Invoke-Command -Session $session -ScriptBlock {(Get-CIMInstance Win32_VideoController).CurrentHorizontalResolution}
         $this.Highpx = Invoke-Command -Session $session -ScriptBlock {(Get-CIMInstance Win32_VideoController).CurrentVerticalResolution}
         $this.Hz = Invoke-Command -Session $session -ScriptBlock {(Get-CIMInstance Win32_VideoController).CurrentRefreshRate}
-        $this.Active = 1
+
     }
 
-    [String] getName()
-    {
-        return $this.Name
-    }
-
-    [Int] getWidthpx()
-    {
-        return $this.Widthpx
-    }
-
-    [Int] getHighpx()
-    {
-        return $this.Highpx
-    }
-
-    [Int] getHz()
-    {
-        return $this.Hz
-    }
     [String] setName($Name)
     {
         $this.Name = $Name
@@ -54,9 +35,51 @@ class screen {
     {
         $this.Highpx = $Highpx
     }    
-    
+
     [Int] setHz($Hz)
     {
         $this.Hz = $Hz
+    }
+
+    [String] getBrand()
+    {
+        return $this.Brand
+    }
+    [String] getName()
+    {
+        return $this.Name
+    }
+    [String] getReference()
+    {
+        return $this.Reference
+    }
+    [Int] getWidthpx()
+    {
+        return $this.Widthpx
+    }
+
+    [Int] getHighpx()
+    {
+        return $this.Highpx
+    }
+
+    [Int] getHz()
+    {
+        return $this.Hz
+    }
+
+    [Int] getInch()
+    {
+        return $this.Inch
+    }
+
+    [Int] getMarkerId()
+    {
+        return $this.Hz
+    }   
+    
+    [Int] getActive()
+    {
+        return $this.Active
     }
 }
