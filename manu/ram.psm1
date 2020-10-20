@@ -72,4 +72,49 @@ class Ram {
     {
         return $this.Active
     }
+
+    [String] setBrand($Brand)
+    {
+        $this.Brand=$Brand
+    }
+
+    [String] setName($Name)
+    {
+        $this.Name=$Name
+    }
+
+    [String] setFormFactor($FormFactor)
+    {
+        $this.FormFactor=$FormFactor
+    }
+
+    [String] setMemoryType($MemoryType)
+    {
+        $this.MemoryType=$MemoryType
+    }
+
+    [Int] setSize($Size)
+    {
+        $this.Size=$Size
+    }
+
+    [Int] setMaxVoltage($MaxVoltage)
+    {
+        $this.MaxVoltage=$MaxVoltage
+    }
+
+    [Int] setMinVoltage($MinVoltage)
+    {
+        $this.MinVoltage=$MinVoltage
+    }
+
+    [Decimal] setBaseFrequency($BaseFrequency)
+    {
+        $this.BaseFrequency=$BaseFrequency
+    }
+
+    [Int] setActive($Active)
+    {
+        $this.Active=$Active
+    }
 }
