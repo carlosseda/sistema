@@ -1,14 +1,14 @@
-# Para lanzar este archivo necesitamos instalar previamente en el Windows que lo ejecuta el siguiente módulo: 
+# Para lanzar este archivo necesitamos instalar previamente en el Windows que lo ejecuta el siguiente mï¿½dulo: 
 #
 # https://dev.mysql.com/downloads/connector/net/
 #
-# A continuación debemos crear un usuario en mysql que tenga acceso remoto.Debemos entrar en mysql server y escribir:
+# A continuaciï¿½n debemos crear un usuario en mysql que tenga acceso remoto.Debemos entrar en mysql server y escribir:
 #
 #############
 #
-# CREATE USER 'nombre_de_usuario'@'%'IDENTIFIED BY 'contraseña_preferida'
+# CREATE USER 'nombre_de_usuario'@'%'IDENTIFIED BY 'contraseï¿½a_preferida'
 #
-# # # # El símbolo % permite que el usuario se conecte de manera remota, si pusieramos 'localhost' sólo podría usarse localmente
+# # # # El sï¿½mbolo % permite que el usuario se conecte de manera remota, si pusieramos 'localhost' sï¿½lo podrï¿½a usarse localmente
 #
 # GRANT ALL PRIVILEGES ON sistema.* TO 'nombre_de usuario'@'%' WITH GRANT OPTION;
 #
@@ -18,25 +18,25 @@
 # 
 ############# 
 
-# Vamos a seguir la siguiente guía:
+# Vamos a seguir la siguiente guï¿½a:
 #
 # https://michlstechblog.info/blog/powershell-some-examples-to-use-a-mysql-database/
 #
 #
-# Cargamos el módulo que hemos instalado que nos permite conectar con nuestro mysql
+# Cargamos el mï¿½dulo que hemos instalado que nos permite conectar con nuestro mysql
 
 [void][System.Reflection.Assembly]::LoadWithPartialName("MySql.Data")
 
 # Guardamos en la variable $user el nombre del usuario que hemos creado previamente (en este caso "administrador", se recomienda usar
-# por seguridad un nombre más discreto). En la variable $password guardaremos la ruta al archivo que contendrá nuestra contraseña
-# encriptada. Para crearlo escribiremos lo siguiente en Powershell que arrancará el script:
+# por seguridad un nombre mï¿½s discreto). En la variable $password guardaremos la ruta al archivo que contendrï¿½ nuestra contraseï¿½a
+# encriptada. Para crearlo escribiremos lo siguiente en Powershell que arrancarï¿½ el script:
 # 
 # Clave peferida es la clave que quiera
 #
 # "clave_preferida" | ConvertTo-SecureString -AsPlainText -Force | ConvertFrom-SecureString | Out-File "C:\mysql_password1.txt"
 #
-# Finalmente creamos un objeto PSCredential en la variable $credential que contendrá nuestro usuario ($credential.UserName) como nuestra
-# contraseña en texto plano $cred.GetNetworkCredential().Password
+# Finalmente creamos un objeto PSCredential en la variable $credential que contendrï¿½ nuestro usuario ($credential.UserName) como nuestra
+# contraseï¿½a en texto plano $cred.GetNetworkCredential().Password
 
 
 [string] $User = "administrador"
@@ -44,7 +44,7 @@
 [PSObject] $Credential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $User, (Get-Content $File | ConvertTo-SecureString)
 
 
-# Añadimos el nombre de la base de datos y la ip del servidor que la aloja para crear una conexión
+# Aï¿½adimos el nombre de la base de datos y la ip del servidor que la aloja para crear una conexiï¿½n
 
 [string]$MySQLDB = 'sistema'
 [string]$MySQLHost = '192.168.0.154'
@@ -53,8 +53,8 @@
 
 $connection = New-Object MySql.Data.MySqlClient.MySqlConnection($ConnectionString)
 
-# Lo siguiente es un "try&catch", el ordenador ejecutará el código de la sección try (en este caso abrir una conexión), si algo sale
-# mal todo lo cambiado por el código volverá a su estado original y ejecutará el código de catch, que usualmente suele ser devolver
+# Lo siguiente es un "try&catch", el ordenador ejecutarï¿½ el cï¿½digo de la secciï¿½n try (en este caso abrir una conexiï¿½n), si algo sale
+# mal todo lo cambiado por el cï¿½digo volverï¿½ a su estado original y ejecutarï¿½ el cï¿½digo de catch, que usualmente suele ser devolver
 # un mensaje de error.  
 
 $Error.Clear()
@@ -67,12 +67,15 @@ catch
     write-warning ("Could not open a connection to Database $MySQLDB on Host $MySQLHost. Error: "+$Error[0].ToString())
 }
 
-# Preparamos un objeto MySqlCommand cuyo valor de su atributo CommandText será la query de MySQL (en este caso
-# insertar un registro en la tabla t.chasis). 
+# Preparamos un objeto MySqlCommand cuyo valor de su atributo CommandText serï¿½ la query de MySQL (en este caso
+# insertar un registro en la tabla t.chasis).
+
+$channels = (Get-CimInstance -class CIM-Slot).Tag
+$version = (Get-CimInstance -class CIM-Slot).MaxDatWith
 
 $MYSQLCommand = New-Object MySql.Data.MySqlClient.MySqlCommand
 $MYSQLCommand.Connection = $connection
-$MYSQLCommand.CommandText='INSERT into `sistema`.`t_pci_connection` (`version`,`channels`,`motherboard_id`) VALUES("1.0","16",16)'
+$MYSQLCommand.CommandText='INSERT into `sistema`.`t_pci_connection` (`version`,`channels`,`motherboard_id`) VALUES("$($channels)","$(version)","motherboard_id)'
 
 # Finalmente ejecutamos la query
 
