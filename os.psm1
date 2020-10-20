@@ -26,4 +26,19 @@ class Os {
     {
         return $this.MemorySize
     }
+
+    [String] setName($Name)
+    {
+        $this.Name = $Name
+    }
+
+    [String] setVersion($Version)
+    {
+        $this.Version = $Version
+    }
+
+    [Int] setMemorySize($MemorySize)
+    {
+        $this.MemorySize = $MemorySize
+    }
 }
