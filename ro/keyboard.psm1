@@ -6,7 +6,6 @@ class keyboard {
     [string]$Name
     [tinyint]$Active
 
-
     keyboard($session)
     {
       
@@ -25,5 +24,20 @@ class keyboard {
     [Int] getActive()
     {
         return $this.Active
+    }
+
+     [string] setBrand($Brand)
+    {
+        $this.Brand = $Brand
+    }
+
+    [String] setName($Name)
+    {
+        $this.Name = $Name
+    }
+
+    [Int] setActive($Active)
+    {
+        $this.Active = $Active
     }
 }

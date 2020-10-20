@@ -14,8 +14,7 @@ class Ram {
     [Decimal]$MaxFrequency
     [Int]$Active
 
-
-    Os($session)
+    Ram($session)
     {
         $this.Brand = Invoke-Command -Session $session -ScriptBlock {(Get-CIMInstance Win32_PhysicalMemory).Manufacturer}
         $this.Name = Invoke-Command -Session $session -ScriptBlock {(Get-CIMInstance Win32_PhysicalMemory).Name}
@@ -75,46 +74,46 @@ class Ram {
 
     [String] setBrand($Brand)
     {
-        $this.Brand=$Brand
+        $this.Brand = $Brand
     }
 
     [String] setName($Name)
     {
-        $this.Name=$Name
+        $this.Name = $Name
     }
 
     [String] setFormFactor($FormFactor)
     {
-        $this.FormFactor=$FormFactor
+        $this.FormFactor = $FormFactor
     }
 
     [String] setMemoryType($MemoryType)
     {
-        $this.MemoryType=$MemoryType
+        $this.MemoryType = $MemoryType
     }
 
     [Int] setSize($Size)
     {
-        $this.Size=$Size
+        $this.Size = $Size
     }
 
     [Int] setMaxVoltage($MaxVoltage)
     {
-        $this.MaxVoltage=$MaxVoltage
+        $this.MaxVoltage = $MaxVoltage
     }
 
     [Int] setMinVoltage($MinVoltage)
     {
-        $this.MinVoltage=$MinVoltage
+        $this.MinVoltage = $MinVoltage
     }
 
     [Decimal] setBaseFrequency($BaseFrequency)
     {
-        $this.BaseFrequency=$BaseFrequency
+        $this.BaseFrequency = $BaseFrequency
     }
 
     [Int] setActive($Active)
     {
-        $this.Active=$Active
+        $this.Active = $Active
     }
 }

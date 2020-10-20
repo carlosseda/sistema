@@ -1,29 +1,43 @@
 #!/usr/bin/pwsh
 
-class sata_connection {
+class SataConnection {
 
-    [enum]$Version
-    [int]$Motherboard_id
-    [tinyint]$Active
+    [string]$Version
+    [int]$MotherboardId
+    [int]$Active
 
-
-    sata_connection($session)
+    SataConnection($session)
     {
-        $this.Version = Invoke-Command -Session $session -ScriptBlock {(Get-CimInstance -Class Win32_IDEController).length;}
+        $this.Version = Invoke-Command -Session $session -ScriptBlock {(Get-CimInstance -Class Win32_IDEController).length}
     }
 
-    [Enum] getVersion()
+    [String] getVersion()
     {
         return $this.Version
     }
 
-    [String] getMotherboard_id()
+    [String] getMotherboardId()
     {
-        return $this.Motherboard_id
+        return $this.MotherboardId
     }
 
     [Int] getActive()
     {
         return $this.Active
+    }
+
+    [String] setVersion($Version)
+    {
+        $this.Version = $Version
+    }
+
+    [String] setMotherboardId($MotherboardId)
+    {
+        $this.MotherboardId = $MotherboardId
+    }
+
+    [Int] setActive($Active)
+    {
+        $this.Active = $Active
     }
 }

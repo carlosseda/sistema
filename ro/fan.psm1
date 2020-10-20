@@ -6,7 +6,6 @@ class fan {
     [string]$Name
     [tinyint]$Active
 
-
     fan($session)
     {
 
@@ -25,5 +24,20 @@ class fan {
     [Int] getActive()
     {
         return $this.Active
+    }
+
+    [string] setBrand($Brand)
+    {
+        $this.Brand = $Brand
+    }
+
+    [string] getName($Name)
+    {
+        $this.Name = $Name
+    }
+
+    [Int] getActive($Active)
+    {
+        $this.Active = $Active
     }
 }

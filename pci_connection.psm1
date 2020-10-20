@@ -1,29 +1,29 @@
 #!/usr/bin/pwsh
 
-class pci_connection {
+class PciConnection {
 
-    [int]$channels
-    [string]$version
-    [int]$motherbiard_id
+    [int]$Channels
+    [string]$Version
+    [int]$MotherboardId
 
-    Os($session)
+    PciConnection($session)
     {
         $this.channels = Invoke-Command -Session $session -ScriptBlock {(Get-CimInstance -class CIM-Slot).Tag}
         $this.version = Invoke-Command -Session $session -ScriptBlock {(Get-CimInstance -class CIM-Slot).MaxDatWith}
-        $this.motherboard_id = Invoke-Comand -Session $session -ScriptBlock {().}
+        $this.motherboardId = Invoke-Comand -Session $session -ScriptBlock {().}
     }
 
-    [String] getchannels()
+    [String] getChannels()
     {
         return $this.channels
     }
 
-    [String] getversion()
+    [String] getVersion()
     {
         return $this.version
     }
 
-    [Int] getmotherboard_id()
+    [Int] getMotherboardId()
     {
         return $this.motherboard_id
     }

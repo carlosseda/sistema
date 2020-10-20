@@ -8,6 +8,7 @@ class UserSession {
 
     UserSession($session)
     {
+    }
 
     [Int] getUserId()
     {

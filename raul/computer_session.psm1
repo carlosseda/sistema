@@ -8,6 +8,7 @@ class ComputerSession {
 
     ComputerSession($session)
     {
+    }
 
     [Int] getComputerId()
     {

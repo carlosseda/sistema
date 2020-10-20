@@ -6,7 +6,6 @@ class Session {
     [array]$Privileges
     [int]$Active
 
-
     Session($session)
     {
         $this.Name = Invoke-Command -Session $session -ScriptBlock {(Get-Wmiobject -class Win32_UserAccount).Caption}

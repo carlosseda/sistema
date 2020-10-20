@@ -8,6 +8,7 @@ class OsSession {
 
     OsSession($session)
     {
+    }
 
     [Int] getOsId()
     {

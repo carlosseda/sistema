@@ -6,7 +6,6 @@ class mouse {
     [string]$Name
     [tinyint]$Active
 
-
     mouse($session)
     {
  
@@ -23,6 +22,21 @@ class mouse {
     }
 
     [Int] getActive()
+    {
+        return $this.Active
+    }
+
+    [string] getBrand($Brand)
+    {
+        $this.Brand = $Brand
+    }
+
+    [String] getName($Name)
+    {
+        $this.Name = $Name
+    }
+
+    [Int] getActive($Active)
     {
         return $this.Active
     }
