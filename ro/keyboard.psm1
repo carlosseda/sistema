@@ -9,7 +9,7 @@ class keyboard {
 
     keyboard($session)
     {
-        return $this.Connection
+      
     }
 
     [string] getBrand()

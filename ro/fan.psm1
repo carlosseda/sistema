@@ -9,7 +9,7 @@ class fan {
 
     fan($session)
     {
-       return $this.Connection
+
     }
 
     [string] getBrand()
