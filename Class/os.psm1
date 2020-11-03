@@ -5,11 +5,13 @@ class Os {
     [string]$Name
     [string]$Version
     [int]$MemorySize
+    [int]$Active
 
     Os($session)
     {
         $this.Name = Invoke-Command -Session $session -ScriptBlock {(Get-CIMInstance Win32_OperatingSystem).Caption}
         $this.Version = Invoke-Command -Session $session -ScriptBlock {(Get-CIMInstance Win32_OperatingSystem).Version}
+        $this.Active = 1
     }
 
     [String] getName()
@@ -27,18 +29,36 @@ class Os {
         return $this.MemorySize
     }
 
-    [String] setName($Name)
+    [Int] getActive()
     {
-        $this.Name = $Name
+        return $this.Active
     }
 
-    [String] setVersion($Version)
+    [String] setName($name)
     {
-        $this.Version = $Version
+        $this.Name = $name
+
+        return $this.Name
     }
 
-    [Int] setMemorySize($MemorySize)
+    [String] setVersion($version)
     {
-        $this.MemorySize = $MemorySize
+        $this.Version = $version
+
+        return $this.Version
+    }
+
+    [Int] setMemorySize($memorySize)
+    {
+        $this.MemorySize = $memorySize
+
+        return $this.MemorySize
+    }
+
+    [Int] setActive($active)
+    {
+        $this.MemorySize = $active
+
+        return $this.Active
     }
 }

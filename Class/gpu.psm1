@@ -15,12 +15,12 @@ class Gpu {
     Gpu($session)
     {
         $this.Brand = Invoke-Command -Session $session -ScriptBlock {(Get-CimInstance -class CIM_VideoController).AdapterCompatibility} 
-        $this.Name = (Get-CimInstance -class CIM_VideoController).Name
-        $this.MaxFrequency = (Get-CimInstance -class CIM_VideoController).AdapterDACType
-        $this.MaxMemory =  (Get-CimInstance -class CIM_VideoController).AdapterRam
+        $this.Name = Invoke-Command -Session $session -ScriptBlock {(Get-CimInstance -class CIM_VideoController).Name}
+        $this.MaxFrequency = Invoke-Command -Session $session -ScriptBlock {(Get-CimInstance -class CIM_VideoController).AdapterDACType}
+        $this.MaxMemory =  Invoke-Command -Session $session -ScriptBlock {(Get-CimInstance -class CIM_VideoController).AdapterRam}
         $this.MaxHighResolutionPx = Invoke-Command -Session $session -ScriptBlock {(Get-CimInstance -class CIM_VideoController).CurrentHorizontalResolution}
         $this.MaxWidthResolutionPx = Invoke-Command -Session $session -ScriptBlock {(Get-CimInstance -class CIM_VideoController).CurrentVerticalResolution} 
-        $this.MaxHz = (Get-CimInstance -class CIM_VideoController).MaxRefreshRate
+        $this.MaxHz = Invoke-Command -Session $session -ScriptBlock {(Get-CimInstance -class CIM_VideoController).MaxRefreshRate}
         $this.Active = 1
     }
 
@@ -64,54 +64,71 @@ class Gpu {
         return $this.TdpW
     }
 
-    
     [Int] getActive()
     {
         return $this.Active
     }
 
-      [String] setBrand($Brand)
+    [String] setBrand($brand)
     {
-        $this.Brand = $Brand
+        $this.Brand = $brand
+
+        return $this.Brand
     }
 
-    [String] setName($Name)
+    [String] setName($name)
     {
-        $this.Name = $Name
+        $this.Name = $name
+
+        return $this.Name
     }
 
-    [Decimal] setMaxFrequency($MaxFrequency)
+    [Decimal] setMaxFrequency($maxFrequency)
     {
-        $this.MaxFrequency = $MaxFrequency
+        $this.MaxFrequency = $maxFrequency
+
+        return $this.MaxFrequency
     }
 
-    [Decimal] setMaxMemory($MaxMemory)
+    [Decimal] setMaxMemory($maxMemory)
     {
-        $this.MaxMemory = $MaxMemory
+        $this.MaxMemory = $maxMemory
+
+        return $this.MaxMemory
     }
 
-    [Int] setMaxHighResolutionPx($MaxHighResolutionPx)
+    [Int] setMaxHighResolutionPx($maxHighResolutionPx)
     {
         $this.MaxHighResolutionPx = $MaxHighResolutionPx
+
+        return $this.MaxHighResolutionPx 
     }
 
-    [Int] setMaxWidthResolutionPx($MaxWidthResolutionPx)
+    [Int] setMaxWidthResolutionPx($maxWidthResolutionPx)
     {
-        $this.MaxWidthResolutionPx = $MaxWidthResolutionPx
+        $this.MaxWidthResolutionPx = $maxWidthResolutionPx
+
+        return $this.MaxWidthResolutionPx 
     }
 
-    [Int] setMaxHz($MaxHz)
+    [Int] setMaxHz($maxHz)
     {
-        $this.MaxHz = $MaxHz
+        $this.MaxHz = $maxHz
+
+        return $this.MaxHz
     }
 
-    [Int] setTdpW($TdpW)
+    [Int] setTdpW($tdpW)
     {
-        $this.TdpW = $TdpW
+        $this.TdpW = $tdpW
+
+        return $this.TdpW
     }
     
-    [Int] setActive($Active)
+    [Int] setActive($active)
     {
-        $this.Active = $Active
+        $this.Active = $active
+
+        return $this.Active
     }
 }

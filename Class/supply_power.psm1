@@ -40,25 +40,35 @@ class SupplyPower {
     [String] setBrand($brand)
     {
         $this.Brand = $brand
+
+        return $this.Brand
     }
 
     [String] getName($name)
     {
         $this.Name = $name
+
+        return $this.Name
     }
 
     [Int] getWatts($watts)
     {
         $this.Watts = $watts
+
+        return $this.Watts
     }
 
     [Int] getModular($modular)
     {
         $this.Modular = $modular
+
+        return $this.Modular
     }
 
     [Int] getActive($active)
     {
         $this.Active = $active
+        
+        return  $this.Active
     }
 }

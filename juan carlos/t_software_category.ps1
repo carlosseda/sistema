@@ -10,7 +10,6 @@ class SoftwareCategory {
     SoftwareCategory($session)
     {
         $this.Name = Invoke-Command -Session $session -ScriptBlock {(Get-CIMInstance Win32_OperatingSystem).Caption}
-        
     }
 
     [String] getname()
@@ -30,8 +29,8 @@ class SoftwareCategory {
     [int]getUpdatedAt()
     {
         return $this.UpdatedAt
+    }
 }
 
 
-[void][System.Reflection.Assembly]::LoadWithPartialName("MySql.Data")
 
