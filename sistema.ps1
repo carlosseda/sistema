@@ -8,7 +8,8 @@ $session = New-PSSession -Hostname $user'@'$ip
 
 $os = [Os]::New($session)
 
-Write-Output '----OS----'
+Write-Output '-----OS-----'
 Write-Output $os
+
 
 
