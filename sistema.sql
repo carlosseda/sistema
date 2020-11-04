@@ -66,7 +66,7 @@ CREATE TABLE `t_base_installation` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `t_buy`
+-- Estructura de tabla para la tabla `t_buy` -
 --
 
 CREATE TABLE `t_buy` (
