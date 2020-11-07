@@ -4,38 +4,38 @@ class UserTablet {
 
     [Int]$UserId
     [Int]$TabletId
-    [Int]$Active
+    [Bool]$Active
 
-    [Int] getUserId()
+    [Int]getUserId()
     {
         return $this.UserId
     }
 
-    [Int] getTabletId()
+    [Int]getTabletId()
     {
         return $this.TabletId
     }
 
-    [Int] getActive()
+    [Bool]getActive()
     {
         return $this.Active
     }
 
-    [Int] setUserId($userId)
+    [Int]setUserId([Int]$userId)
     {
         $this.UserId = $userId
 
         return $this.UserId
     }
 
-    [Int] setMobileId($tabletId)
+    [Int]setMobileId([Int]$tabletId)
     {
         $this.TabletId = $tabletId
 
         return $this.TabletId
     }
 
-    [Int] setActive($active)
+    [Bool]setActive([Bool]$active)
     {
         $this.Active = $Active
 

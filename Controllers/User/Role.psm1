@@ -2,30 +2,43 @@
 
 class Role {
 
-    [string]$Name
-    [string]$Description
+    [String]$Name
+    [String]$Description
+    [Bool]$Active
 
-    [String] getName()
+    [String]getName()
     {
         return $this.Name
     }
 
-    [String] getDescription()
+    [String]getDescription()
     {
         return $this.Description
     }
 
-    [String] setName($name)
+    [Bool]getActive()
+    {
+	return $this.Active
+    }
+
+    [String]setName([String]$name)
     {
         $this.Name = $name
 
         return $this.Name
     }
 
-    [String] setDescription($description)
+    [String]setDescription([String]$description)
     {
         $this.Description = $description
 
         return $this.Description
+    }
+
+    [Bool]setActive([Bool]$active)
+    {
+	$this.Active = $active
+
+	return $this.Active
     }
 }

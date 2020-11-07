@@ -3,44 +3,40 @@
 class BaseInstallation 
 {
 
-    [int]$SessionId
-    [int]$SoftwareId
-    [int]$Active
+    [Int]$SessionId
+    [Int]$SoftwareId
+    [Int]$Active
 
-    BaseInstallation($session)
-    {
-    }
-
-    [Int] getSessionId()
+    [Int]getSessionId()
     {
         return $this.SessionId
     }
 
-    [Int] getSoftwareId()
+    [Int]getSoftwareId()
     {
         return $this.SoftwareId
     }
 
-    [Int] getActive()
+    [Bool]getActive()
     {
         return $this.Active
     }
 
-    [Int] setSessionId($sessionId)
+    [Int]setSessionId([Int]$sessionId)
     {
         $this.SessionId = $sessionId
 
         return $this.SessionId
     }
 
-    [Int] setSoftwareId($softwareId)
+    [Int]setSoftwareId([Int]$softwareId)
     {
         $this.SoftwareId = $softwareId
 
         return $this.SoftwareId
     }
 
-    [Int] setActive($active)
+    [Bool]setActive([Bool]$active)
     {
         $this.Active = $active
 

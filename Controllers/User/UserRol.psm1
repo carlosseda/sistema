@@ -2,40 +2,40 @@
 
 class UserRol {
 
-    [int]$ComputerId
-    [int]$UserId
-    [boolean]$Active
+    [Int]$ComputerId
+    [Int]$UserId
+    [Bool]$Active
 
-    [int] getComputerId()
+    [Int]getComputerId()
     {
         return $this.ComputerId
     }
 
-    [int] getUserId()
+    [Int]getUserId()
     {
         return $this.UserId
     }
 
-    [boolean] getActive()
+    [Bool]getActive()
     {
         return $this.Active
     }
 
-    [int] getComputerId($computerId)
+    [Int]setComputerId([Int]$computerId)
     {
         $this.ComputerId = $computerId
 
         return $this.ComputerId
     }
 
-    [int] getUserId($userId)
+    [Int]setUserId([Int]$userId)
     {
         $this.UserId = $userId
 
         return $this.UserId
     }
 
-    [boolean] getActive($active)
+    [Bool]setActive([Bool]$active)
     {
         $this.Active = $active
 

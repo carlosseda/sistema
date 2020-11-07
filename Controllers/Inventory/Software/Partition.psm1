@@ -2,89 +2,88 @@
 
 class Partition {
 
-    [string]$VolumeName
-    [int]$Size
-    [string]$FileSystem 
-    [int]$OsInstalled 
-    [int]$DiskId 
-    [int]$Active
+    [String]$VolumeName
+    [Float]$SizeGB
+    [String]$FileSystem 
+    [Bool]$OsInstalled 
+    [Int]$ComputerComponentId
+    [Bool]$Active
 
-    Partition($session)
+    Partition([PsObject]$session)
     {
         $this.VolumeName = Invoke-Command -Session $session -ScriptBlock {(Get-WmiObject -Class Win32_LogicalDisk).VolumeName}
         $this.SizeGB = Invoke-Command -Session $session -ScriptBlock {(Get-WmiObject -Class Win32_LogicalDisk).Size}
         $this.FileSystem = Invoke-Command -Session $session -ScriptBlock {(Get-WmiObject -Class Win32_LogicalDisk).FileSystem}
         $this.OsInstalled = Invoke-Command -Session $session -ScriptBlock {(Get-WmiObject -Class Win32_LogicalDisk).osInstalled}
         $this.DiskId = Invoke-Command -Session $session -ScriptBlock {(Get-WmiObject -Class Win32_LogicalDisk).DiskId}
-        $this.Active = 1
     }
 
-    [String] getVolumeName()
+    [String]getVolumeName()
     {
         return $this.VolumeName
     }
 
-    [int] getSize()
+    [Float]getSizeGB()
     {
-        return $this.Size 
+        return $this.SizeGB 
     }
 
-    [string] getFileSystem()
+    [String]getFileSystem()
     {
         return $this.FileSystem 
     }
 
-    [Int] getOsInstalled()
+    [Bool]getOsInstalled()
     {
         return $this.OsInstalled 
     }
 
-    [int] getDiskId()
+    [Int]getComputerComponentId()
     {
-        return $this.DiskId 
+        return $this.ComputerComponentId
     }
 
-    [Int] getActive()
+    [Bool]getActive()
     {
         return $this.Active 
     }
 
-    [String] setVolumeName($volumeName)
+    [String]setVolumeName([String]$volumeName)
     {
         $this.VolumeName = $volumeName
 
         return $this.VolumeName
     }
 
-    [int] setSize($size)
+    [Float]setSizeGB([Float]$sizeGB)
     {
-        $this.Size = $size
+        $this.SizeGB = $sizeGB
 
-        return $this.Size 
+        return $this.SizeGB
     }
 
-    [string] setFileSystem($fileSystem)
+    [String]setFileSystem([String]$fileSystem)
     {
         $this.FileSystem = $fileSystem
 
         return $this.FileSystem 
     }
 
-    [Int] setOsInstalled($osInstalled)
+    [Int]setOsInstalled([Int]$osInstalled)
     {
         $this.OsInstalled = $osInstalled
 
         return $this.OsInstalled 
     }
 
-    [int] setDiskId($diskId)
+    [Int]setComputerComponentId([Int]$computerComponentId)
     {
-        $this.DiskId = $diskId
+        $this.ComputerComponentId = $computerComponentId
 
-        return $this.DiskId 
+        return $this.ComputerComponentId
     }
 
-    [Int] setActive($active)
+    [Bool]setActive([Bool]$active)
     {
         $this.Active = $active
 

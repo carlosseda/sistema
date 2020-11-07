@@ -4,38 +4,38 @@ class UserMobile {
 
     [Int]$UserId
     [Int]$MobileId
-    [Int]$Active
+    [Bool]$Active
 
-    [Int] getUserId()
+    [Int]getUserId()
     {
         return $this.UserId
     }
 
-    [Int] getMobileId()
+    [Int]getMobileId()
     {
         return $this.MobileId
     }
 
-    [Int] getActive()
+    [Bool]getActive()
     {
         return $this.Active
     }
 
-    [Int] setUserId($userId)
+    [Int]setUserId([Int]$userId)
     {
         $this.UserId = $userId
 
         return $this.UserId
     }
 
-    [Int] setMobileId($mobileId)
+    [Int]setMobileId([Int]$mobileId)
     {
         $this.MobileId = $mobileId
 
         return $this.MobileId
     }
 
-    [Int] setActive($active)
+    [Bool]setActive([Bool]$active)
     {
         $this.Active = $Active
 

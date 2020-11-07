@@ -4,38 +4,38 @@ class ComputerOsLicense {
 
     [Int]$ComputerId
     [Int]$OsLicenseId
-    [Int]$Active
+    [Bool]$Active
 
-    [Int] getComputerId()
+    [Int]getComputerId()
     {
         return $this.ComputerId
     }
 
-    [Int] getOsLicenseId()
+    [Int]getOsLicenseId()
     {
         return $this.OsLicenseId
     }
 
-    [Int] getActive()
+    [Bool]getActive()
     {
         return $this.Active
     }
 
-    [Int] setComputerId($computerId)
+    [Int]setComputerId([Int]$computerId)
     {
         $this.ComputerId = $computerId
 
         return $this.ComputerId
     }
 
-    [Int] setOsLicenseId($osLicenseId)
+    [Int]setOsLicenseId([Int]$osLicenseId)
     {
         $this.OsLicenseId = $osLicenseId
 
         return $this.OsLicenseId
     }
 
-    [Int] setActive($active)
+    [Bool]setActive([Bool]$active)
     {
         $this.Active = $active
 

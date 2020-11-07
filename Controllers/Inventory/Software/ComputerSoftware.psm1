@@ -4,38 +4,38 @@ class ComputerSoftware {
 
     [Int]$ComputerId
     [Int]$SoftwareId
-    [Int]$Active
+    [Bool]$Active
 
-    [Int] getComputerId()
+    [Int]getComputerId()
     {
         return $this.ComputerId
     }
 
-    [Int] getSoftwareId()
+    [Int]getSoftwareId()
     {
         return $this.OsId
     }
 
-    [Int] getActive()
+    [Bool]getActive()
     {
         return $this.Active
     }
 
-    [Int] setComputerId($computerId)
+    [Int]setComputerId([Int]$computerId)
     {
         $this.ComputerId = $computerId
 
         return $this.ComputerId
     }
 
-    [Int] setSoftwareId($SoftwareId)
+    [Int]setSoftwareId([Int]$SoftwareId)
     {
         $this.SoftwareId = $SoftwareId
 
         return $this.SoftwareId
     }
 
-    [Int] setActive($active)
+    [Bool]setActive([Bool]$active)
     {
         $this.Active = $active
 

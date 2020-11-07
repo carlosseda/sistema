@@ -3,83 +3,138 @@
 class Software 
 {
 
-    [int]$SoftwareCategoryId
-    [string]$Name
-    [string]$Version
-    [int]$Memory
-    [boolean]$Active
+    [Int]$SoftwareCategoryId
+    [String]$Name
+    [String]$Version
+    [Float]$MemorySizeMB
+    [String]$OsRequeriment
+    [Int]$RamGBRequeriment
+    [Float]$MemoryMBRequeriment
+    [Float]$CpuGBRequeriment
+    [Float]$GpuGBRequeriment
+    [Bool]$Active
 
-    Software($session)
+    Software([PsObject]$session)
     {
         $this.Name = Invoke-Command -Session $session -ScriptBlock {(Get-CIMInstance Win32_OperatingSystem).Caption}
         $this.Version = Invoke-Command -Session $session -ScriptBlock {(Get-CIMInstance Win32_OperatingSystem).Version}
-        $this.Memory = Invoke-COmmand -Session $session -ScriptBlock {(Get-CIMInstance Win32_OperatingSystem).Memory}
+        $this.MemorySizeMB = Invoke-COmmand -Session $session -ScriptBlock {(Get-CIMInstance Win32_OperatingSystem).Memory}
     }
 
-    [Int] getSoftwareCategoryId()
+    [Int]getSoftwareCategoryId()
     {
         return $this.SoftwareCategoryId
     }
 
-    [String] getName()
+    [String]getName()
     {
         return $this.Name
     }
 
-    [String] getVersion()
+    [String]getVersion()
     {
         return $this.Version
     }
 
-    [Int] getMemory()
+    [Float]getMemorySizeMB()
     {
-        return $this.Memory
+        return $this.MemorySizeMB
     }
 
-    [boolean] getActive()
+    [String]OsRequeriment()
+    {
+        return $this.OsRequeriment
+    }
+
+    [Int]RamGBRequeriment()
+    {
+        return $this.RamGBRequeriment
+    }
+
+    [Float]MemoryMBRequeriment()
+    {
+        return $this.MemoryMBRequeriment
+    }
+
+    [Float]CpuGBRequeriment()
+    {
+        return $this.CpuGBRequeriment
+    }
+
+    [Float]GpuGBRequeriment()
+    {
+        return $this.GpuGBRequeriment
+    }
+
+    [Bool]getActive()
     {
         return $this.Active
     }
 
-    [datetime] getCreatedAt()
-    {
-        return $this.CreatedAt
-    }
-
-    [datetime] getUpdatedAt()
-    {
-        return $this.UpdatedAt
-    }
-
-    [Int] getSoftwareCategoryId($softwareCategoryId)
+    [Int]getSoftwareCategoryId([Int]$softwareCategoryId)
     {
         $this.SoftwareCategoryId = $softwareCategoryId
 
         return $this.SoftwareCategoryId
     }
 
-    [String] setName($name)
+    [String]setName([String]$name)
     {
         $this.Name = $name
 
         return $this.Name
     }
 
-    [String] setVersion($version)
+    [String]setVersion([String]$version)
     {
         $this.Version = $version
 
         return $this.Version
     }
 
-    [Int] setMemory($memory)
+    [Float]setMemorySizeMB([Float]$memorySizeMB)
     {
-        $this.Memory = $memory
+        $this.MemorySizeMB = $MemorySizeMB
 
-        return $this.Memory
+        return $this.MemorySizeMB
     }
 
-    [boolean] setActive($active)
+    [String]OsRequeriment([String]$osRequeriment)
+    {
+        $this.OsRequeriment = $osRequeriment
+
+        return $this.OsRequeriment
+    }
+
+    [Int]RamGBRequeriment([Int]$ramGBRequeriment)
+    {
+        $this.RamGBRequeriment = $ramGBRequeriment
+
+        return $this.RamGBRequeriment
+    }
+
+    [Float]MemoryMBRequeriment([Float]$memoryMBRequeriment)
+    {
+        $this.MemoryMBRequeriment = $memoryMBRequeriment
+
+        return $this.MemoryMBRequeriment
+    }
+
+    [Float]CpuGBRequeriment([Float]$cpuGBRequeriment)
+    {
+        $this.CpuGBRequeriment = $cpuGBRequeriment
+
+        return $this.CpuGBRequeriment
+    }
+
+    [Float]GpuGBRequeriment([Float]$gpuGBRequeriment)
+    {
+        $this.GpuGBRequeriment = $gpuGBRequeriment
+
+        return $this.GpuGBRequeriment
+    }
+
+    [Bool]setActive([Bool]$active)
     {
         $this.Active = $active
 

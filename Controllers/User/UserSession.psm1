@@ -4,38 +4,38 @@ class UserSession {
 
     [Int]$UserId
     [Int]$SessionId
-    [Int]$Active
+    [Bool]$Active
 
-    [Int] getUserId()
+    [Int]getUserId()
     {
         return $this.UserId
     }
 
-    [Int] getSessionId()
+    [Int]getSessionId()
     {
         return $this.SessionId
     }
 
-    [Int] getActive()
+    [Bool]getActive()
     {
         return $this.Active
     }
 
-    [Int] setUserId($userId)
+    [Int]setUserId([Int]$userId)
     {
         $this.UserId = $userId
 
         return $this.UserId
     }
 
-    [Int] setSessionId($sessionId)
+    [Int] setSessionId([Int]$sessionId)
     {
         $this.SessionId = $sessionId
 
         return $this.SessionId
     }
 
-    [Int] setActive($active)
+    [Bool] setActive([Bool]$active)
     {
         $this.Active = $Active
 

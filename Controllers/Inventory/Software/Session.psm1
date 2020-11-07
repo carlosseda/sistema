@@ -2,53 +2,52 @@
 
 class Session {
 
-    [array]$Name
-    [array]$Privileges
-    [string]$Password
-    [int]$Active
+    [Array]$Name
+    [Array]$Privileges
+    [String]$Password
+    [Int]$Active
 
-    UserSession($connect)
+    Session([PsObject]$session)
     {
-        $this.Name = Invoke-Command -Session $connect -ScriptBlock {(Get-Ciminstance -class Win32_UserAccount).Caption}
-        $this.Privileges = Invoke-Command -Session $connect -ScriptBlock {(Get-Ciminstance -class Win32_UserAccount).AccountType}
-        $this.Active = 1
+        $this.Name = Invoke-Command -Session $session -ScriptBlock {(Get-Ciminstance -class Win32_UserAccount).Caption}
+        $this.Privileges = Invoke-Command -Session $session -ScriptBlock {(Get-Ciminstance -class Win32_UserAccount).AccountType}
     }
 
-    [array] getName()
+    [Array]getName()
     {
         return $this.Name
     }
 
-    [array] getPrivileges()
+    [Array]getPrivileges()
     {
         return $this.Privileges
     }
 
-    [String] getPassword()
+    [String]getPassword()
     {
         return $this.Password
     }
 
-    [int] getActive()
+    [Bool]getActive()
     {
         return $this.Active
     }
 
-    [array] setName($name)
+    [Array]setName([Array]$name)
     {
         $this.Name = $name
 
         return $this.Name
     }
 
-    [array] getPrivileges($privileges)
+    [array]getPrivileges([array]$privileges)
     {
         $this.Privileges = $privileges
 
         return $this.Privileges
     }
 
-    [int] setActive($active)
+    [Bool]setActive([Bool]$active)
     {
         $this.Active = $active
 

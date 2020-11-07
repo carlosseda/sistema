@@ -3,60 +3,59 @@
 class Os 
 {
 
-    [string]$Name
-    [string]$Version
-    [int]$MemorySize
-    [boolean]$Active
+    [String]$Name
+    [String]$Version
+    [Float]$MemorySizeGB
+    [Bool]$Active
 
-    Os($session)
+    Os([PsObject]$session)
     {
         $this.Name = Invoke-Command -Session $session -ScriptBlock {(Get-CIMInstance Win32_OperatingSystem).Caption}
         $this.Version = Invoke-Command -Session $session -ScriptBlock {(Get-CIMInstance Win32_OperatingSystem).Version}
-        $this.Active = 1
     }
 
-    [String] getName()
+    [String]getName()
     {
         return $this.Name
     }
 
-    [String] getVersion()
+    [String]getVersion()
     {
         return $this.Version
     }
 
-    [Int] getMemorySize()
+    [Float]getMemorySizeGB()
     {
-        return $this.MemorySize
+        return $this.MemorySizeGB
     }
 
-    [Int] getActive()
+    [Int]getActive()
     {
         return $this.Active
     }
 
-    [String] setName($name)
+    [String]setName([String]$name)
     {
         $this.Name = $name
 
         return $this.Name
     }
 
-    [String] setVersion($version)
+    [String] setVersion([String]$version)
     {
         $this.Version = $version
 
         return $this.Version
     }
 
-    [Int] setMemorySize($memorySize)
+    [Float]setMemorySizeGB([Float]$memorySizeGB)
     {
-        $this.MemorySize = $memorySize
+        $this.MemorySizeGB = $memorySizeGB
 
-        return $this.MemorySize
+        return $this.MemorySizeGB
     }
 
-    [Int] setActive($active)
+    [Bool]setActive([Bool]$active)
     {
         $this.MemorySize = $active
 

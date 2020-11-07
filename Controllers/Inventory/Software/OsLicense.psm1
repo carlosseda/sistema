@@ -2,46 +2,45 @@
 
 class OsLicense 
 {
-    [int]$OsId
-    [string]$License
-    [int]$Active
+    [Int]$OsId
+    [String]$License
+    [Bool]$Active
 
-    OsLicense($session)
+    OsLicense([PsObject]$session)
     {
         $this.License = Invoke-Command -Session $session -ScriptBlock {(Get-CimInstance Win32_OperatingSystem).SerialNumber}
-        $this.Active = 1
     }
 
-    [Int] getOsId()
+    [Int]getOsId()
     {
         return $this.OsId
     }
 
-    [String] getLicense()
+    [String]getLicense()
     {
         return $this.License 
     }
 
-    [Int] getActive()
+    [Bool]getActive()
     {
         return $this.Active 
     }
 
-    [Int] setOsId($osId)
+    [Int]setOsId([Int]$osId)
     {
         $this.OsId = $osId
 
         return $this.OsId
     }
 
-    [String] setLicense($license)
+    [String]setLicense([String]$license)
     {
         $this.License = $license
 
         return $this.License
     }
     
-    [Int] setActive($active)
+    [Int]setActive([Int]$active)
     {
         $this.Active = $active
 

@@ -2,53 +2,53 @@
 
 class UserTracking {
 
-    [datetime]$Datetime
-    [string]$Action
-    [int]$ComputerSessionId
-    [int]$Active
+    [Datetime]$Datetime
+    [String]$Action
+    [Int]$ComputerSessionId
+    [Bool]$Active
 
-    [datetime] getDatetime()
+    [Datetime]getDatetime()
     {
         return $this.Datetime
     }
 
-    [String] getAction()
+    [String]getAction()
     {
         return $this.Action
     }
 
-    [int] getComputerSessionId()
+    [Int]getComputerSessionId()
     {
         return $this.ComputerSessionId
     }
 
-    [int] getActive()
+    [Bool]getActive()
     {
         return $this.Active
     }
 
-    [datetime] setDatetime($datetime)
+    [Datetime]setDatetime([Datetime]$datetime)
     {
         $this.Datetime = $datetime
 
         return $this.Datetime
     }
 
-    [String] setAction($action)
+    [String]setAction([String]$action)
     {
         $this.Action = $action
 
         return $this.Action
     }
 
-    [int] getComputerSessionId($computerSessionId)
+    [Int]setComputerSessionId([Int]$computerSessionId)
     {
         $this.ComputerSessionId = $computerSessionId
 
         return $this.ComputerSessionId
     }
 
-    [int] getActive($active)
+    [Bool]setActive([Bool]$active)
     {
         $this.Active = $active
 

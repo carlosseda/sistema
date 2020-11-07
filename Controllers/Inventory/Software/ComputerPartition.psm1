@@ -4,38 +4,38 @@ class ComputerOs {
 
     [Int]$ComputerId
     [Int]$PartitionId
-    [Int]$Active
+    [Bool]$Active
 
-    [Int] getComputerId()
+    [Int]getComputerId()
     {
         return $this.ComputerId
     }
 
-    [Int] getPartitionId()
+    [Int]getPartitionId()
     {
         return $this.PartitionId
     }
 
-    [Int] getActive()
+    [Bool]getActive()
     {
         return $this.Active
     }
 
-    [Int] setComputerId($computerId)
+    [Int]setComputerId([Int]$computerId)
     {
         $this.ComputerId = $computerId
 
         return $this.ComputerId
     }
 
-    [Int] setPartitionId($partitionId)
+    [Int]setPartitionId([Int]$partitionId)
     {
         $this.partitionId = $partitionId
 
         return $this.partitionId
     }
 
-    [Int] setActive($active)
+    [Bool]setActive([Bool]$active)
     {
         $this.Active = $active
 

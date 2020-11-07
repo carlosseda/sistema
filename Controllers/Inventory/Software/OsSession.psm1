@@ -4,38 +4,38 @@ class OsSession {
 
     [Int]$OsId
     [Int]$SessionId
-    [Int]$Active
+    [Bool]$Active
 
-    [Int] getOsId()
+    [Int]getOsId()
     {
         return $this.OsId
     }
 
-    [Int] getSessionId()
+    [Int]getSessionId()
     {
         return $this.SessionId
     }
 
-    [Int] getActive()
+    [Bool]getActive()
     {
         return $this.Active
     }
 
-    [Int] setOsId($osId)
+    [Int]setOsId([Int]$osId)
     {
         $this.OsId = $osId
 
         return $this.OsId
     }
 
-    [Int] setSessionId($sessionId)
+    [Int]setSessionId([Int]$sessionId)
     {
         $this.SessionId = $sessionId
 
         return $this.SessionId
     }
 
-    [Int] setActive($Active)
+    [Bool]setActive([Bool]$Active)
     {
         $this.Active = $Active
 

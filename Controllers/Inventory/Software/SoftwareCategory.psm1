@@ -2,27 +2,27 @@
 
 class SoftwareCategory {
 
-    [string]$Name
-    [boolean]$Active
+    [String]$Name
+    [Bool]$Active
 
-    [String] getName()
+    [String]getName()
     {
         return $this.Name
     }
 
-    [Boolean] getActive()
+    [Boolean]getActive()
     {
         return $this.Active
     }
 
-    [String] getName($name)
+    [String]getName([String]$name)
     {
         $this.Name = $name
 
         return $this.Name
     }
 
-    [Boolean] getActive($active)
+    [Bool]getActive([Bool]$active)
     {
         $this.Active = $active
 

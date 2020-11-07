@@ -2,105 +2,105 @@
 
 class User {
 
-    [string]$Name
-    [string]$Surname
-    [string]$Email
-    [datetime]$StartDate
-    [datetime]$EndDate
-    [datetime]$StartTime
-    [datetime]$EndTime
-    [boolean]$Active
+    [String]$Name
+    [String]$Surname
+    [String]$Email
+    [Datetime]$StartDate
+    [Datetime]$EndDate
+    [Datetime]$StartTime
+    [Datetime]$EndTime
+    [Bool]$Active
     
-    [String] getName()
+    [String]getName()
     {
         return $this.Name
     }
 
-    [String] getSurname()
+    [String]getSurname()
     {
         return $this.Surname
     }
 
-    [String] getEmail()
+    [String]getEmail()
     {
         return $this.Email
     }
 
-    [datetime] getStartDate()
+    [Datetime]getStartDate()
     {
         return $this.StartDate
     }
 
-    [datetime] getEndDate()
+    [Datetime]getEndDate()
     {
         return $this.EndDate
     }
 
-    [datetime] getStartTime()
+    [Datetime]getStartTime()
     {
         return $this.StartTime
     }
 
-    [datetime] getEndTime()
+    [Datetime]getEndTime()
     {
         return $this.EndTime
     }
 
-    [boolean] getActive()
+    [Boolean]getActive()
     {
         return $this.Active
     }
 
-    [String] setName($name)
+    [String]setName([String]$name)
     {
         $this.Name = $name
 
         return $this.Name
     }
 
-    [String] setSurname($surname)
+    [String]setSurname([String]$surname)
     {
         $this.Surname = $surname
 
         return $this.Surname
     }
 
-    [String] setEmail($email)
+    [String]setEmail([String]$email)
     {
         $this.Email = $email
 
         return $this.Email
     }
 
-    [datetime] setStartDate($startDate)
+    [Datetime]setStartDate([Datetime]$startDate)
     {
         $this.StartDate = $startDate
 
         return $this.StartDate
     }
 
-    [datetime] setEndDate($endDate)
+    [Datetime]setEndDate([Datetime]$endDate)
     {
         $this.EndDate = $endDate
 
         return $this.EndDate
     }
 
-    [datetime] setStartTime($startTime)
+    [Datetime]setStartTime([Datetime]$startTime)
     {
         $this.StartTime = $startTime
 
         return $this.StartTime
     }
 
-    [datetime] setEndTime($endTime)
+    [Datetime]setEndTime([Datetime]$endTime)
     {
         $this.EndTime = $endTime
 
         return $this.endTime
     }
 
-    [boolean] setActive($active)
+    [Bool]setActive([Bool]$active)
     {
         $this.Active = $active
 

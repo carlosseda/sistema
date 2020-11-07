@@ -4,38 +4,38 @@ class UserComputer {
 
     [Int]$ComputerId
     [Int]$UserId
-    [Int]$Active
+    [Bool]$Active
 
-    [Int] getComputerId()
+    [Int]getComputerId()
     {
         return $this.ComputerId
     }
 
-    [Int] getUserId()
+    [Int]getUserId()
     {
         return $this.UserId
     }
 
-    [Int] getActive()
+    [Bool]getActive()
     {
         return $this.Active
     }
 
-    [Int] setComputerId($computerId)
+    [Int]setComputerId([Int]$computerId)
     {
         $this.ComputerId = $computerId
 
         return $this.ComputerId
     }
 
-    [Int] setUserId($userId)
+    [Int]setUserId([Int]$userId)
     {
         $this.UserId = $userId
 
         return $this.SessionId
     }
 
-    [Int] setActive($active)
+    [Bool]setActive([Bool]$active)
     {
         $this.Active = $active
 

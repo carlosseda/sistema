@@ -6,36 +6,36 @@ class ComputerSession {
     [Int]$SessionId
     [Int]$Active
 
-    [Int] getComputerId()
+    [Int]getComputerId()
     {
         return $this.ComputerId
     }
 
-    [Int] getSessionId()
+    [Int]getSessionId()
     {
         return $this.SessionId
     }
 
-    [Int] getActive()
+    [Int]getActive()
     {
         return $this.Active
     }
 
-    [Int] setComputerId($computerId)
+    [Int]setComputerId([Int]$computerId)
     {
         $this.ComputerId = $computerId
 
         return $this.ComputerId
     }
 
-    [Int] setSessionId($sessionId)
+    [Int]setSessionId([Int]$sessionId)
     {
         $this.SessionId = $sessionId
 
         return $this.SessionId
     }
 
-    [Int] setActive($active)
+    [Bool]setActive([Bool]$active)
     {
         $this.Active = $active
 
