@@ -1,8 +1,7 @@
-$ip = '2.155.215.204'
+$ip = '192.168.0.21'
 $user = 'Admin'
-$port = '22118'
 
-pscp -i /home/xisco/.ssh/id_rsa.ppk -l Admin -P 22118 /home/xisco/ninite.exe 2.155.215.204:C:\prueba
+pscp -i /home/sistema/.ssh/id_rsa.ppk -l /tmp/ninite.exe 192.168.0.21:C:\prueba
 $session = New-PSsession -HostName $user'@'$ip -p $port
 Invoke-Command -Session $session -ScriptBlock {Start-Process -FilePath 'C:\prueba\ninite.exe' -ArgumentList '/install'}
 
