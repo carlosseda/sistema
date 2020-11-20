@@ -1,0 +1,40 @@
+version: "3.8"
+
+services:
+
+  putty:
+    image: jlesage/putty
+    build: 
+     #context: https://github.com/carlosseda/sistema#Docker#putty
+      context: .
+      dockerfile: ./Docker/putty/Dockerfile
+      args:
+        USER_ID: 1000
+        GROUP_ID: 1000
+    restart: always
+    ports:
+      - "5800:5800"
+    volumes:
+      - "/docker/appdata/putty:/config:rw"
+      - "/tmp/:/tmp/"
+    networks:
+      - ninite
+  
+  powershell:
+    build:
+      #context: https://github.com/carlosseda/sistema#Docker3powershell
+      context: .
+      dockerfile: ./Docker/powershell/Dockerfile
+      args:
+        USER_ID: 1000
+        GROUP_ID: 1000
+      
+    restart: always 
+    
+    networks:
+      - ninite
+      
+ networks:
+  resolute:
+    external:
+      name: ninite
