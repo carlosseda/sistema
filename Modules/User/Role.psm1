@@ -37,8 +37,8 @@ class Role {
 
     [Bool]setActive([Bool]$active)
     {
-	$this.Active = $active
+        $this.Active = $active
 
-	return $this.Active
+        return $this.Active
     }
 }

@@ -5,6 +5,7 @@ class User {
     [String]$Name
     [String]$Surname
     [String]$Email
+    [Int]$RolId
     [Datetime]$StartDate
     [Datetime]$EndDate
     [Datetime]$StartTime
@@ -24,6 +25,11 @@ class User {
     [String]getEmail()
     {
         return $this.Email
+    }
+
+    [Int]getRolId()
+    {
+        return $this.RolId
     }
 
     [Datetime]getStartDate()
@@ -72,6 +78,13 @@ class User {
         return $this.Email
     }
 
+    [Int]getRolId([Int]$rolId)
+    {
+        $this.RolId = $rolId
+
+        return $this.RolId
+    }
+
     [Datetime]setStartDate([Datetime]$startDate)
     {
         $this.StartDate = $startDate
@@ -97,7 +110,7 @@ class User {
     {
         $this.EndTime = $endTime
 
-        return $this.endTime
+        return $this.EndTime
     }
 
     [Bool]setActive([Bool]$active)
