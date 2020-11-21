@@ -1,0 +1,50 @@
+notify:
+  email:
+    recipients:
+      - juan.baptiste@gmail.com
+    from: $$SMTP_FROM
+    host: $$SMTP_HOST
+    port: $$SMTP_PORT
+    username: $$SMTP_USERNAME
+    password: $$SMTP_PASSWORD
+  downstream:
+    server: $$DOWNSTREAM_DRONE_SERVER
+    repositories:
+      - jbaptiste_cs/ctecsas-otrs
+      - jbaptiste_cs/apukay-otrs
+      - jbaptiste_cs/cachesimple-otrs
+
+    token: $$DOWNSTREAM_DRONE_TOKEN
+    when:
+      event: push
+      branch: otrs-4_0_x
+      success: true
+publish:
+  docker:
+    username: $$DOCKER_USER
+    password: $$DOCKER_PASSWORD
+    email: $$DOCKER_EMAIL
+    repo: $$DOCKER_USER/otrs
+    tag:
+      - latest
+#      - $${BRANCH}-$${COMMIT:0:8}
+#      - 6.0.6-$${COMMIT:0:8}
+      - 6.0.21
+    file: otrs/Dockerfile
+    context: otrs
+    environment:
+      - DOCKER_LAUNCH_DEBUG=true
+
+  docker:
+    username: $$DOCKER_USER
+    password: $$DOCKER_PASSWORD
+    email: $$DOCKER_EMAIL
+    repo: $$DOCKER_USER/otrs-mariadb
+    tag:
+      - latest
+      - $${BRANCH}-$${COMMIT:0:8}
+    file: mariadb/Dockerfile
+    context: mariadb
+    load: docker/image-mariadb.tar
+    environment:
+      - DOCKER_LAUNCH_DEBUG=true
