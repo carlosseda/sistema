@@ -4,6 +4,7 @@ class UserRol {
 
     [Int]$ComputerId
     [Int]$UserId
+    [Int]$RoleId
     [Bool]$Active
 
     [Int]getComputerId()

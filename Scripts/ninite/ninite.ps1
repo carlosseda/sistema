@@ -1,10 +1,17 @@
 #!/snap/bin/pwsh
 
-$ip = '2.155.215.204'
-$user = 'Admin'
-$port = '22118'
+#$ip = '2.155.215.204'
+#$port = '22118'
 
-pscp -i /home/sistema/.ssh/id_rsa.ppk -l sistema -P $args[1] /home/sistema/ninite.exe $args[0]:C:\ninite
-$session = New-PSsession -HostName $user'@'$ip -p $port
+$ip = $args[1]
+$port = $args[2]
+$softwareId = $args[3]
+
+if ($softwareId == array){
+
+}
+
+$session = New-PSsession -HostName "sistema@$ip" -Port "$port"
+Invoke-RestMethod -Method 'Get' -ContentType 'application/x-www-form-urlencoded' -Headers @{'X-XSRF-TOKEN' = $apiToken} -Uri $url -Body $body
 Invoke-Command -Session $session -ScriptBlock {Start-Process -FilePath 'C:\prueba\ninite.exe' -ArgumentList '/install'}
 

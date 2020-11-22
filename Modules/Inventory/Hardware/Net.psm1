@@ -7,6 +7,7 @@ class Net {
     [String]$Reference
     [String]$Type
     [String]$Ip
+    [String]$SubnetMask
     [Boolean]$Wifi
     [String]$WifiSsid
     [Int]$RjEntries

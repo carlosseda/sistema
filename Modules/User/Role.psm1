@@ -4,6 +4,8 @@ class Role {
 
     [String]$Name
     [String]$Description
+    [Int]$FamilyID
+    [Int]$PrivilegeID
     [Bool]$Active
 
     [String]getName()

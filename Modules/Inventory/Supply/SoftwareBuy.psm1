@@ -1,10 +1,9 @@
 #!/snap/bin/pwsh
 
-class Buy
+class SoftwareBuy
 {
 
-    [String]$ComponentType
-    [Int]$ComponentId
+    [Int]$SoftwareId
     [Float]$Price
     [Float]$PriceOffer
     [DateTime]$Date

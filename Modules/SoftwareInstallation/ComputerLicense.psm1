@@ -1,15 +1,10 @@
 #!/snap/bin/pwsh
 
-class SoftwareLicense 
+class ComputerLicense 
 {
-    [int]$SoftwareId
-    [string]$License
+    [int]$ComputerId
+    [string]$SoftwareLicenseId
     [int]$Active
-
-    SoftwareLicense([PsObject]$session)
-    {
-        $this.License = Invoke-Command -Session $session -ScriptBlock {(Get-CimInstance Win32_OperatingSystem).SerialNumber}
-    }
 
     [String]getLicense()
     {

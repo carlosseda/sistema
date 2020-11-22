@@ -3,7 +3,6 @@
 class Software 
 {
 
-    [Int]$SoftwareCategoryId
     [String]$Name
     [String]$Version
     [Float]$MemorySizeMB
@@ -12,6 +11,7 @@ class Software
     [Float]$MemoryMBRequeriment
     [Float]$CpuGBRequeriment
     [Float]$GpuGBRequeriment
+    [String]$InstallerPath
     [Bool]$Active
 
     Software([PsObject]$session)

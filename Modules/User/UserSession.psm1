@@ -4,8 +4,10 @@ class UserSession {
 
     [Int]$UserId
     [Int]$SessionId
+    [Int]$ComputerId
+    [Int]$UserFamilyId
     [Bool]$Active
-
+    
     [Int]getUserId()
     {
         return $this.UserId

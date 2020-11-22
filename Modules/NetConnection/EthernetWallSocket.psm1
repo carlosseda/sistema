@@ -1,18 +1,10 @@
 ﻿#!/snap/bin/pwsh
 
-class NetConnection {
+class EthernetWallSocket {
 
-    [String]$Device
-    [String]$DeviceId
+    [String]$SpaceId
     [String]$NetId
-    [String]$WifiSsid
-    [Int]$RjEntry
-    [String]$InterfaceAlias
-    [String]$NetworkCategory
-    [IPAddress]$Ip
-    [String]$Dns
-    [String]$SubnetMask
-    [Bool]$Active
+    [Int]$Number
     
     [String]getDevice()
     {

@@ -5,6 +5,7 @@ class User {
     [String]$Name
     [String]$Surname
     [String]$Email
+    [Int]$Telephone
     [Int]$RolId
     [Datetime]$StartDate
     [Datetime]$EndDate

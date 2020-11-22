@@ -1,15 +1,15 @@
 ﻿#!/snap/bin/pwsh
 
-class BaseInstallation 
+class RoleInstallation 
 {
 
-    [Int]$SessionId
+    [Int]$RoleId
     [Int]$SoftwareId
     [Int]$Active
 
-    [Int]getSessionId()
+    [Int]getRoleId()
     {
-        return $this.SessionId
+        return $this.RoleId
     }
 
     [Int]getSoftwareId()

@@ -3,6 +3,7 @@
 class Place {
 
     [String]$Reference
+    [String]$Name
     [String]$Address
     [Int]$PostalCode
     [Bool]$Active
